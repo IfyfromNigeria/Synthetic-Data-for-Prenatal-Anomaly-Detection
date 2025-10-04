@@ -138,8 +138,8 @@ If you use this code or models, please cite:
 }
 ```
 
-## 🙋 **Contact:**
+## 🙋 **Contact**
 
 Created and maintained by Ifunanya Akupuome
 
-For questions or collaboration: GitHub
+For questions or collaboration: ifunanyaakupuome@gmail.com
