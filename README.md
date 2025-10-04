@@ -59,32 +59,36 @@ Dependencies include: PyTorch, Torchvision, EfficientNet-PyTorch, Albumentations
 
 ## 🚀 **Usage**
 
-**Training**
+This project is fully config-driven. All experiment settings (data paths, training hyperparameters, checkpoints, etc.) are defined in YAML files under `configs/`.
 
-Edit configs/default.yaml and run:
+### Training
+
+Edit `configs/default.yaml` to set train/val CSVs and checkpoint directory, then run:
 
 ```bash
-Copy code
-python -m src.train_classifier --config configs/default.yaml
+python scripts/train_classifier.py --config configs/default.yaml
+
 ```
 
 **Evaluation**
 
-Edit configs/eval.yaml (set checkpoint path) and run:
+Edit configs/eval.yaml (set test CSV and checkpoint path) and run:
 
 ```bash
-python -m src.eval_classifier --config configs/eval.yaml
+python scripts/eval_classifier.py --config configs/eval.yaml
 ```
+This will output accuracy, F1, AUC, a confusion matrix (confusion_matrix.png), and a JSON file with metrics.
 
 **Synthetic Data Generation**
 
-Using WGAN-GP:
+WGAN-GP:
+To generate synthetic ultrasound patches with the WGAN-GP, use the generator section of configs/eval.yaml (or create a separate config), then run:
 
 ```bash
-python -m src.generate_synthetic --num 64 --class anomalous \
-  --checkpoint models/checkpoints/wgan_gp_checkpoint.pt \
-  --out outputs/samples/
+python scripts/generate_synthetic.py --config configs/eval.yaml
+
 ```
+Images will be saved under the directory specified in the config (generator.output_dir).
 
 ## 📥 **Pretrained Models**
 Pretrained weights are hosted under GitHub Releases.
