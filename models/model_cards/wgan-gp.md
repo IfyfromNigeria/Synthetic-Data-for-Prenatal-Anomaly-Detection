@@ -6,6 +6,11 @@
 
 **Notes:** Generates realistic NT textures without strong mode collapse.  
 
+**Download weights: [https://github.com/IfyfromNigeria/Synthetic-Data-for-Prenatal-Anomaly-Detection/releases/download/v1.0.0/wgan_gp_checkpoint.pt]
+
+**SHA256 checksum:**  
+17c526a2e10fda4803ebaa896dca8686c675638edfe815606359e820c58f28be
+
 **Usage Example:**
 ```bash
 python -m src.generate_synthetic --num 64 --class anomalous \
