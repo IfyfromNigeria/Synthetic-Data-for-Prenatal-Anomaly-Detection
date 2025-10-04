@@ -14,4 +14,5 @@
 **Download weights:** [https://github.com/IfyfromNigeria/Synthetic-Data-for-Prenatal-Anomaly-Detection/releases/download/v1.0.0/syn_best_model_enet.1.pth]
 
 **SHA256 checksum:**
-sha256:798d97379b684e31a0661c4f8b17bbcb1220bb182ccd59ae4790dba0cc7e066e
+798d97379b684e31a0661c4f8b17bbcb1220bb182ccd59ae4790dba0cc7e066e
+
