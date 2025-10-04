@@ -1,1 +1,40 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.so
+*.pyo
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+.env
+.venv/
+env/
+venv/
+
+# IDE configs
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+*.out
+
+# Data (keep instructions only)
+data/*
+!data/README.md
+
+# Models (weights tracked via GitHub Releases, not repo)
+models/checkpoints/*
+!models/README.md
+!models/model_cards/*
+
+# Outputs (images, generated samples, training runs)
+outputs/
+runs/
 
