@@ -1,34 +1,15 @@
-# Evaluation configuration for Synthetic Data for Prenatal Anomaly Detection
-
 seed: 42
-
-data:
-  root: data                # base dataset folder
-  test_split: test          # evaluation split
-  img_size: 224
-  num_classes: 2
-
-evaluation:
-  batch_size: 32
-  threshold: 0.5            # probability threshold for binary classification
-
+paths:
+  test_csv: data/test.csv
+  eval_out: outputs/eval
 model:
-  name: efficientnet_b0     # backbone for classifier
-  pretrained: false         # load from checkpoint, not ImageNet
-  checkpoint: models/checkpoints/classifier_hybrid_efficientnet_b0.pt
-  # Options: classifier_real_efficientnet_b0.pt, classifier_synthetic_efficientnet_b0.pt, etc.
-
-metrics:
-  - accuracy
-  - precision
-  - recall
-  - f1
-  - auc
+  checkpoint: models/checkpoints/real_model_artifacts/best_model_enet.pth
 
 generator:
-  name: wgan-gp
-  checkpoint: models/checkpoints/wgan_gp_nt_conditional.pt
+  checkpoint: models/wgan_gp/wgan_gp_checkpoint.pt
   z_dim: 100
-  num_samples: 64
-  class_label: anomalous    # options: normal, anomalous
+  num_classes: 2
+  num_normal: 555
+  num_anomalous: 555
+  batch_size: 32
   output_dir: outputs/samples
