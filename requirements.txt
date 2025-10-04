@@ -1,1 +1,25 @@
+# Core ML / DL
+torch>=2.0.0
+torchvision>=0.15.0
+efficientnet-pytorch
+scikit-learn
+numpy
+pandas
+
+# Data Augmentation
+albumentations>=1.4.0
+opencv-python
+Pillow
+
+# Visualization
+matplotlib
+seaborn
+
+# Experiment utilities
+tqdm
+pyyaml
+
+# Jupyter / Notebooks
+jupyter
+notebook
 
