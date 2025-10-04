@@ -25,11 +25,11 @@ Thumbs.db
 *.log
 *.out
 
-# Data (keep instructions only)
+# Data
 data/*
 !data/README.md
 
-# Models (weights tracked via GitHub Releases, not repo)
+# Models (weights tracked via GitHub Releases)
 models/checkpoints/*
 !models/README.md
 !models/model_cards/*
