@@ -1,17 +1,19 @@
-import argparse
+import argparse, yaml
 from src.train.train_classifier import run_train
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--train_csv", required=True)
-    ap.add_argument("--val_csv",   required=True)
-    ap.add_argument("--save_dir",  default="models/checkpoints/real_model_artifacts")
-    ap.add_argument("--epochs",    type=int, default=40)
-    ap.add_argument("--batch",     type=int, default=16)
-    ap.add_argument("--lr",        type=float, default=1e-4)
-    ap.add_argument("--seed",      type=int, default=42)
-    args = ap.parse_args()
+    p = argparse.ArgumentParser()
+    p.add_argument("--config", default="configs/default.yaml")
+    args = p.parse_args()
 
-    run_train(csv_path={"train":args.train_csv, "val":args.val_csv},
-              save_dir=args.save_dir, num_epochs=args.epochs,
-              batch_size=args.batch, lr=args.lr, seed=args.seed)
+    with open(args.config) as f:
+        C = yaml.safe_load(f)
+
+    run_train(
+        csv_path={"train": C["paths"]["train_csv"], "val": C["paths"]["val_csv"]},
+        save_dir=C["paths"].get("checkpoints", "models/checkpoints"),
+        num_epochs=C["training"].get("epochs", 40),
+        batch_size=C["training"].get("batch_size", 16),
+        lr=C["training"].get("learning_rate", 1e-4),
+        seed=C.get("seed", 42),
+    )
