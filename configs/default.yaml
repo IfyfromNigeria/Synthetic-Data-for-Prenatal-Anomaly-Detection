@@ -1,0 +1,35 @@
+# Default configuration for Synthetic Data for Prenatal Anomaly Detection
+
+seed: 42   # random seed for reproducibility
+
+data:
+  root: data                # path to dataset folder
+  train_split: train        # subfolder or split name for training
+  val_split: val            # subfolder or split name for validation
+  img_size: 224             # image resize dimension
+  num_classes: 2            # binary classification (normal vs anomalous)
+
+training:
+  batch_size: 16
+  epochs: 20
+  learning_rate: 0.0003
+  optimizer: adam
+  weight_decay: 0.0001
+  scheduler: cosine         # options: step, cosine, none
+
+model:
+  name: efficientnet_b0     # backbone
+  pretrained: true          # load ImageNet weights first
+  dropout: 0.3
+
+generator:
+  type: wgan-gp
+  z_dim: 100
+  critic_updates: 5
+  gp_lambda: 10
+
+paths:
+  outputs: outputs
+  checkpoints: models/checkpoints
+  logs: logs
+
