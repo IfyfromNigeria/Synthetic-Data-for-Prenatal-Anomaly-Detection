@@ -1,10 +1,16 @@
-import argparse
+import argparse, yaml
 from src.train.eval_classifier import run_eval
 
 if __name__ == "__main__":
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--test_csv", required=True)
-    ap.add_argument("--checkpoint", required=True)
-    ap.add_argument("--save_dir",  default="outputs/eval")
-    args = ap.parse_args()
-    run_eval(args.test_csv, args.checkpoint, args.save_dir)
+    p = argparse.ArgumentParser()
+    p.add_argument("--config", default="configs/eval.yaml")
+    args = p.parse_args()
+
+    with open(args.config) as f:
+        C = yaml.safe_load(f)
+
+    run_eval(
+        test_csv=C["paths"]["test_csv"],
+        checkpoint_path=C["model"]["checkpoint"],
+        save_dir=C["paths"].get("eval_out", "outputs/eval"),
+    )
